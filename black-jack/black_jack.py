@@ -53,9 +53,10 @@ def value_of_ace(card_one, card_two):
     2.  'A' (ace card) = 11 (if already in hand)
     3.  '2' - '10' = numerical value.
     """
-    if card_one == 'A' and card_two in ['J', 'Q', 'K', '10']:
-        return 11
-    elif card_two == 'A' and card_one in ['J', 'Q', 'K', '10']:
+    card_one_value = value_of_card(card_one)
+    card_two_value = value_of_card(card_two)
+    hand = card_one_value + card_two_value
+    if hand <= 21:
         return 11
     else:
         return 1
