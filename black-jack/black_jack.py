@@ -17,10 +17,9 @@ def value_of_card(card):
     """
     if card in ['J', 'Q', 'K']:
         return 10
-    elif card == 'A':
-        return 1   
-    else:
-        return int(card)
+    if card == 'A':
+        return 1
+    return int(card)
 
 
 def higher_card(card_one, card_two):
@@ -37,10 +36,9 @@ def higher_card(card_one, card_two):
     card_two_value = value_of_card(card_two)
     if card_one_value > card_two_value:
         return card_one
-    elif card_one_value < card_two_value:
+    if card_one_value < card_two_value:
         return card_two
-    else:
-        return card_one, card_two
+    return card_one, card_two
 
 
 def value_of_ace(card_one, card_two):
@@ -53,13 +51,12 @@ def value_of_ace(card_one, card_two):
     2.  'A' (ace card) = 11 (if already in hand)
     3.  '2' - '10' = numerical value.
     """
-    card_one_value = value_of_card(card_one)
-    card_two_value = value_of_card(card_two)
-    hand = card_one_value + card_two_value
+    card_one_value = 11 if card_one == ('A') else value_of_card(card_one)
+    card_two_value = 11 if card_two == ('A') else value_of_card(card_two)
+    hand = card_one_value + card_two_value + 11
     if hand <= 21:
         return 11
-    else:
-        return 1
+    return 1
 
 
 def is_blackjack(card_one, card_two):
@@ -74,10 +71,9 @@ def is_blackjack(card_one, card_two):
     """
     if card_one == 'A' and value_of_card(card_two) == 10:
         return True
-    elif card_two == 'A' and value_of_card(card_one) == 10:
+    if card_two == 'A' and value_of_card(card_one) == 10:
         return True
-    else:
-        return False
+    return False
 
 
 def can_split_pairs(card_one, card_two):
@@ -89,10 +85,9 @@ def can_split_pairs(card_one, card_two):
 
     if card_one == card_two:
         return True
-    elif card_one in ['J', 'Q', 'K', '10'] and card_two in ['J', 'Q', 'K', '10']:
+    if card_one in ['J', 'Q', 'K', '10'] and card_two in ['J', 'Q', 'K', '10']:
         return True
-    else:
-        return False
+    return False
 
 
 def can_double_down(card_one, card_two):
@@ -103,5 +98,4 @@ def can_double_down(card_one, card_two):
     """
     if value_of_card(card_one) + value_of_card(card_two) in [9, 10, 11]:
         return True
-    else:
-        return False
+    return False
