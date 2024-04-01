@@ -1,5 +1,5 @@
 def convert(number):
-    """ Convert a number to a string, the contents of which depend on the number.
+    """Convert a number to a string, the contents of which depend on the number
 
     :param number: int a positive integer
     :return: str the raindrop sounds or the number as a string
