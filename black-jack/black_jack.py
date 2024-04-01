@@ -15,10 +15,8 @@ def value_of_card(card):
     2.  'A' (ace card) = 1
     3.  '2' - '10' = numerical value.
     """
-    if card in ['J', 'Q', 'K']:
-        return 10
-    if card == 'A':
-        return 1
+    if card in ['J', 'Q', 'K']: return 10
+    if card == 'A': return 1
     return int(card)
 
 
@@ -34,10 +32,8 @@ def higher_card(card_one, card_two):
     """
     card_one_value = value_of_card(card_one)
     card_two_value = value_of_card(card_two)
-    if card_one_value > card_two_value:
-        return card_one
-    if card_one_value < card_two_value:
-        return card_two
+    if card_one_value > card_two_value: return card_one
+    if card_one_value < card_two_value: return card_two
     return card_one, card_two
 
 
@@ -54,8 +50,7 @@ def value_of_ace(card_one, card_two):
     card_one_value = 11 if card_one == ('A') else value_of_card(card_one)
     card_two_value = 11 if card_two == ('A') else value_of_card(card_two)
     hand = card_one_value + card_two_value + 11
-    if hand <= 21:
-        return 11
+    if hand <= 21: return 11
     return 1
 
 
@@ -69,10 +64,8 @@ def is_blackjack(card_one, card_two):
     2.  'A' (ace card) = 11 (if already in hand)
     3.  '2' - '10' = numerical value.
     """
-    if card_one == 'A' and value_of_card(card_two) == 10:
-        return True
-    if card_two == 'A' and value_of_card(card_one) == 10:
-        return True
+    if card_one == 'A' and value_of_card(card_two) == 10: return True
+    if card_two == 'A' and value_of_card(card_one) == 10: return True
     return False
 
 
@@ -83,8 +76,7 @@ def can_split_pairs(card_one, card_two):
     :return: bool - can the hand be split into two pairs? (i.e. cards are of the same value).
     """
 
-    if card_one == card_two:
-        return True
+    if card_one == card_two: return True
     if card_one in ['J', 'Q', 'K', '10'] and card_two in ['J', 'Q', 'K', '10']:
         return True
     return False
