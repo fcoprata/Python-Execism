@@ -25,8 +25,7 @@ def concatenate_rounds(rounds_1, rounds_2):
     :param rounds_2: list - second set of rounds played.
     :return: list - all rounds played.
     """
-
-    pass
+    return rounds_1 + rounds_2
 
 
 def list_contains_round(rounds, number):
@@ -37,7 +36,7 @@ def list_contains_round(rounds, number):
     :return: bool - was the round played?
     """
 
-    pass
+    return number in rounds
 
 
 def card_average(hand):
@@ -47,7 +46,7 @@ def card_average(hand):
     :return: float - average value of the cards in the hand.
     """
 
-    pass
+    return sum(hand) / len(hand)
 
 
 def approx_average_is_average(hand):
@@ -57,7 +56,10 @@ def approx_average_is_average(hand):
     :return: bool - does one of the approximate averages equal the `true average`?
     """
 
-    pass
+    hand_average = card_average(hand)
+    first_last_average = (hand[0] + hand[-1]) / 2
+    middle_card = hand[len(hand) // 2]
+    return hand_average == first_last_average or hand_average == middle_card
 
 
 def average_even_is_average_odd(hand):
@@ -66,8 +68,15 @@ def average_even_is_average_odd(hand):
     :param hand: list - cards in hand.
     :return: bool - are even and odd averages equal?
     """
+    even_sum = 0
+    odd_sum = 0
+    for index, card in enumerate(hand):
+        if index % 2 == 0:
+            even_sum += card
+        else:
+            odd_sum += card
 
-    pass
+    return even_sum / (len(hand) // 2) == odd_sum / (len(hand) // 2)
 
 
 def maybe_double_last(hand):
@@ -77,4 +86,8 @@ def maybe_double_last(hand):
     :return: list - hand with Jacks (if present) value doubled.
     """
 
-    pass
+    if hand[-1] == 11:
+        hand.pop()
+        hand.append(22)
+
+    return hand
