@@ -1,19 +1,31 @@
 def translate(text):
-    vowels = ['a', 'e', 'i', 'o', 'u']
-    words = text.split()
-    translated_words = []
+    """
+    Translates a given text into Pig Latin.
 
-    for word in words:
-        if word[0] in vowels:
-            translated_word = word + 'ay'
-        else:
-            consonant_cluster = ''
-            for i in range(len(word)):
-                if word[i] not in vowels:
-                    consonant_cluster += word[i]
-                else: break
-            translated_word = word[len(consonant_cluster):] + consonant_cluster + 'ay'
+    Args:
+        text (str): The text to be translated.
 
-        translated_words.append(translated_word)
+    Returns:
+        str: The translated text in Pig Latin.
+    """
+    return ' '.join([translate_word(word) for word in text.split()])
 
-    return ' '.join(translated_words)
+
+def translate_word(word):
+    """
+    Translates a single word into Pig Latin.
+
+    Args:
+        word (str): The word to be translated.
+
+    Returns:
+        str: The translated word in Pig Latin.
+    """
+    for vowel in ['a', 'e', 'i', 'o', 'u', 'xr', 'yt']:
+        if word.startswith(vowel):
+            return word + 'ay'
+    for consonant in ['squ', 'sch', 'thr', 'qu', 'ch', 'th', 'y', 'rh']:
+        if word.startswith(consonant):
+            return word[len(consonant):] + consonant + 'ay'
+
+    return word[1:] + word[0] + 'ay'
