@@ -10,8 +10,12 @@ def add_me_to_the_queue(express_queue, normal_queue, ticket_type, person_name):
     :param person_name: str - name of person to add to a queue.
     :return: list - the (updated) queue the name was added to.
     """
-
-    pass
+    express_queue = []
+    normal_queue = []
+    if ticket_type == 1:
+        express_queue.append(person_name)
+    else:
+        normal_queue.append(person_name)
 
 
 def find_my_friend(queue, friend_name):
@@ -22,7 +26,13 @@ def find_my_friend(queue, friend_name):
     :return: int - index at which the friends name was found.
     """
 
-    pass
+    queue = []
+    friend_name = []
+    if friend_name in queue:
+        print(queue.index(friend_name))
+        return queue.index(friend_name)
+    else:
+        return "Not in queue"
 
 
 def add_me_with_my_friends(queue, index, person_name):
