@@ -31,8 +31,6 @@ def find_my_friend(queue, friend_name):
     if friend_name in queue:
         print(queue.index(friend_name))
         return queue.index(friend_name)
-    else:
-        return "Not in queue"
 
 
 def add_me_with_my_friends(queue, index, person_name):
@@ -55,7 +53,11 @@ def remove_the_mean_person(queue, person_name):
     :return: list - queue update with the mean persons name removed.
     """
 
-    pass
+    queue = []
+    person_name = []
+    if person_name in queue:
+        queue.remove(person_name)
+        return queue
 
 
 def how_many_namefellows(queue, person_name):
