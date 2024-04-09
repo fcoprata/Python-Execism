@@ -12,20 +12,34 @@ You can learn more here: https://en.wikipedia.org/wiki/Enumerated_type
 
 # Possible sublist categories.
 # Change the values as you see fit.
-SUBLIST = None
-SUPERLIST = None
-EQUAL = None
-UNEQUAL = None
+SUBLIST = 1
+SUPERLIST = 2
+EQUAL = 3
+UNEQUAL = 4
 
 
 def sublist(list_one, list_two):
-    list_one = ''.join(map(str, list_one))
-    list_two = ''.join(map(str, list_two))
-    if list_one == list_two:
+    """
+    Determines the relationship between two lists.
+
+    Args:
+        list_one (list): The first list.
+        list_two (list): The second list.
+
+    Returns:
+        str: The relationship between the two lists. Possible values are:
+            - 'EQUAL' if the lists are equal.
+            - 'SUBLIST' if list_one is a sublist of list_two.
+            - 'SUPERLIST' if list_one is a superlist of list_two.
+            - 'UNEQUAL' if the lists are not equal and there is no sublist/superlist relationship.
+    """
+    list_one_check = (str(list_one).strip("[]") + ",")
+    list_two_check = (str(list_two).strip("[]") + ",")
+    if list_one_check == list_two_check:
         return EQUAL
-    elif list_one in list_two:
+    elif list_one_check in list_two_check:
         return SUBLIST
-    elif list_two in list_one:
+    elif list_two_check in list_one_check:
         return SUPERLIST
     else:
         return UNEQUAL
