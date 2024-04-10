@@ -34,7 +34,8 @@ def above_threshold(student_scores, threshold):
     :return: list - of integer scores that are at or above the "best" threshold.
     """
 
-    pass
+    best_scores = [score for score in student_scores if score >= threshold]
+    return best_scores
 
 
 def letter_grades(highest):
@@ -51,7 +52,9 @@ def letter_grades(highest):
             86 <= "A" <= 100
     """
 
-    pass
+    highest = highest + 1
+    thresholds = [i for i in range(41, highest, 15)]
+    return thresholds
 
 
 def student_ranking(student_scores, student_names):
@@ -62,7 +65,10 @@ def student_ranking(student_scores, student_names):
     :return: list - of strings in format ["<rank>. <student name>: <score>"].
     """
 
-    pass
+    student_info = []
+    for i, name in enumerate(student_names):
+        student_info.append(f"{i + 1}. {name}: {student_scores[i]}")
+    return student_info
 
 
 def perfect_score(student_info):
@@ -72,4 +78,7 @@ def perfect_score(student_info):
     :return: list - first `[<student name>, 100]` or `[]` if no student score of 100 is found.
     """
 
-    pass
+    for student in student_info:
+        if student[1] == 100:
+            return student
+    return []
