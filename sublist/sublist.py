@@ -37,9 +37,8 @@ def sublist(list_one, list_two):
     list_two_check = (str(list_two).strip("[]") + ",")
     if list_one_check == list_two_check:
         return EQUAL
-    elif list_one_check in list_two_check:
+    if list_one_check in list_two_check:
         return SUBLIST
-    elif list_two_check in list_one_check:
+    if list_two_check in list_one_check:
         return SUPERLIST
-    else:
-        return UNEQUAL
+    return UNEQUAL
